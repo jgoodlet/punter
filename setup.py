@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import re
 from setuptools import setup, find_packages
 
 try:

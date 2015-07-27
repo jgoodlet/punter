@@ -1,7 +1,4 @@
-"""
-punter - A simple wrapper for the Email Hunter API.
-
-"""
+"""punter - A simple wrapper for the Email Hunter API."""
 
 
 __title = 'punter'
@@ -10,4 +7,4 @@ __version__  = '0.0.1'
 __license__ = 'MIT'
 
 
-from . import api
+from .api import domain, exist
