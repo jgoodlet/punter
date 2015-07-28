@@ -1,7 +1,7 @@
 """A collection of helper/utility functions."""
 
 
-import exceptions
+from . import exceptions
 
 
 API_ENDPOINT = 'https://api.emailhunter.co/v1/'
