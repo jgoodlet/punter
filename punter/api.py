@@ -1,8 +1,13 @@
 """Essential punter API."""
 
-from . import core
 
-def domain(url, api_key, offset=0, type='personal'):
+import json
+import requests
+from . import exceptions
+from .helpers import get_url
+
+
+def search(api_key, url='', email='', offset=0, type='personal'):
     """Get a list of emails for the given domain.
 
     Returns the list of all emails from a given domain. Each email is
@@ -10,29 +15,16 @@ def domain(url, api_key, offset=0, type='personal'):
     and the date it was extracted on.
 
     :param domain: Domain name from which you want to find emails.
+    :param email: The target email to search for.
     :param offset: Specifies the number of emails to skip.
     :param type: Specifies email type (i.e. generic or personal).
     :param api_key: Secret client API key.
 
     """
     
-    search = core.Search(api_key)
-    result = search.domain(url, offset, type)
-    return result 
+    url = get_endpoint(api_key, url, email, offset, type)
 
-
-def exist(email, api_key):
-    """Determine if a given email exists. Period.
-
-    Executes a search to determine if the given email can be found.
-    If the email exists a collection of relevant source data is returned
-    to the client (i.e. associated domain, date of extraction, etc..).
-
-    :param email: The target email to search for.
-    :param api_key: Secret client API key.
-
-    """
-    
-    search = core.Search(api_key)
-    result = search.email(email)
-    return result
+    try:
+        return requests.get(url).json()
+    except requests.exceptions.RequestException as err:
+        raise PunterException(err)

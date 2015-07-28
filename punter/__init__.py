@@ -7,4 +7,4 @@ __version__  = '0.0.1'
 __license__ = 'MIT'
 
 
-from .api import domain, exist
+from .api import search

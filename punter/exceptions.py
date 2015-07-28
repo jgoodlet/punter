@@ -6,5 +6,9 @@ class PunterException(Exception):
         super(PunterException, self).__init__(*args, **kwargs)
 
 
+class MissingArgumentsException(PunterException):
+    pass
+
+
 class InvalidAPIKeyException(PunterException):
     pass
