@@ -7,7 +7,7 @@ from . import exceptions
 from .helpers import get_endpoint
 
 
-def search(api_key, url='', email='', offset=0, type='personal'):
+def search(api_key, domain='', email='', offset=0, type='personal'):
     """Get a list of emails for the given domain.
 
     Returns the list of all emails from a given domain. Each email is
@@ -22,7 +22,7 @@ def search(api_key, url='', email='', offset=0, type='personal'):
 
     """
     
-    url = get_endpoint(api_key, url, email, offset, type)
+    url = get_endpoint(api_key, domain, email, offset, type)
 
     try:
         return requests.get(url).json()
