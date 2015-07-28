@@ -4,7 +4,7 @@
 import json
 import requests
 from . import exceptions
-from .helpers import get_url
+from .helpers import get_endpoint
 
 
 def search(api_key, url='', email='', offset=0, type='personal'):
