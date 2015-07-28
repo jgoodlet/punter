@@ -31,7 +31,7 @@ setup(
     url='https://github.com/jgoodlet/punter',
     license='MIT',
     packages=find_packages(),
-    install_requries=requirements,
+    install_requires=requirements,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
