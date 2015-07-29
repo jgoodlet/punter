@@ -3,26 +3,31 @@
 
 import json
 import requests
-from . import exceptions
+from .exceptions import PunterException, InvalidAPIKeyException
 from .helpers import get_endpoint
 
 
-def search(api_key, domain='', email='', offset=0, type='personal'):
-    """Get a list of emails for the given domain.
+def search(api_key, query, offset=0, type='personal'):
+    """Get a list of email addresses for the provided domain.
 
-    Returns the list of all emails from a given domain. Each email is
-    returned with one or more sources, a type (generic or personal)
-    and the date it was extracted on.
+    The type of search executed will vary depending on the query provided.
+    Currently this query is restricted to either domain searches, in which
+    the email addresses (and other bits) for the domain are returned, or
+    searches for an email address. The latter is primary meant for checking
+    if an email address exists, although various other useful bits are also
+    provided (for example, the domain where the address was found).
 
-    :param domain: Domain name from which you want to find emails.
-    :param email: The target email to search for.
+    :param api_key: Secret client API key.
+    :param query: URL or email address on which to search.
     :param offset: Specifies the number of emails to skip.
     :param type: Specifies email type (i.e. generic or personal).
-    :param api_key: Secret client API key.
 
     """
-    
-    url = get_endpoint(api_key, domain, email, offset, type)
+
+    if not isinstance(api_key, str):
+        raise InvalidAPIKeyException('Key must be a string')
+
+    url = get_endpoint(api_key, query, offset, type)
 
     try:
         return requests.get(url).json()

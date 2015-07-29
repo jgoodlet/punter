@@ -87,7 +87,7 @@ SOFTWARE.
 
 [1]: https://img.shields.io/travis/jgoodlet/punter.svg
 [2]: https://travis-ci.org/jgoodlet/punter.svg
-[3]: http://img.shields.io/pypi/v/punter.svg
+[3]: https://img.shields.io/pypi/v/punter.svg
 [4]: https://pypi.python.org/pypi/punter
 [5]: https://img.shields.io/pypi/l/punter.svg
 [6]: https://pypi.python.org/pypi/punter
