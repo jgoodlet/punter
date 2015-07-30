@@ -4,7 +4,7 @@
 [![version][3]][4]
 [![license][5]][6]
 
-A tiny python wrapper for the Email Hunter API. Seriously. It's tiny.
+A tiny python wrapper for the [Email Hunter API](https://emailhunter.co/api). Seriously. It's tiny.
 
 ## Usage
 
@@ -60,6 +60,15 @@ Want to do an email search? Essentially the same deal.
 ## Install
 
     $ pip install punter
+
+## Todo
+
+There's always room for improvement.
+
+- More Pythonic!
+- Tighten up the exception handling
+- Tox configuration
+- Perhaps make a cli (new project?)
 
 ## License
 
