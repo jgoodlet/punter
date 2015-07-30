@@ -13,10 +13,10 @@ DOMAIN_URL = (API_ENDPOINT + 'search?domain={0}&api_key={1}'
 
 EMAIL_RE = re.compile(
     '''
-    [\w\d.+-]+       # username
+    [\w\d.+-]+             # username
     @
-    ([\w\d.]+\.)+    # domain name prefix
-    (com|org|edu)    # support more top-level domains
+    ([\w\d.]+\.)+          # domain name prefix
+    (com|org|edu|io|me)    # support more top-level domains
     ''',
     re.UNICODE | re.VERBOSE | re.IGNORECASE)
 
@@ -24,7 +24,7 @@ EMAIL_RE = re.compile(
 # From Django, slightly modified (http://bit.ly/1ILBmfL)
 URL_RE = re.compile(
     '''
-    ^(?:http|ftp)s?:// # http:// or https://
+    ^(?:http)s?:// # http:// or https://
     (?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+
     (?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|             # domain...
     localhost|                                      # localhost...
@@ -85,6 +85,6 @@ def get_endpoint(api_key, query, offset, type):
         raise ex.InvalidQueryStringException('Invalid query string')
 
     if query_type == 'domain':
-        return DOMAIN_URL.format(url, api_key, offset, type)
+        return DOMAIN_URL.format(query, api_key, offset, type)
     else:
-        return EMAIL_URL.format(email, api_key)
+        return EMAIL_URL.format(query, api_key)

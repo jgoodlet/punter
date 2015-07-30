@@ -1,11 +1,13 @@
 """Test suite for the punter library."""
 
 
+import pytest
+import punter.exceptions as exc
 from punter.api import search
 from punter.helpers import get_query_type, get_endpoint
 
 
-class TestQueryType:
+class TestQueryType(object):
 
     def test_query_type_email_valid(self):
         emails = [
@@ -29,3 +31,50 @@ class TestQueryType:
 
         for email in emails:
             assert get_query_type(email) == ''
+
+    def test_query_type_domain_valid(self):
+        domains = [
+            'http://www.google.com/',
+            'https://github.com/',
+            'http://github.org',
+            'http://github.edu',
+            'http://github.io',
+            'http://github.me'
+        ]
+
+        for domain in domains:
+            assert get_query_type(domain) == 'domain'
+
+    def test_query_type_domain_malformed(self):
+        domains = [
+            '//www.google.com/',
+            'https:/github.com/',
+            'htt://github.org',
+            'http://githubedu',
+            'http://.io',
+            'http://github.'
+        ]
+
+        for domain in domains:
+            assert get_query_type(domain) == ''
+
+
+class TestEndpont(object):
+
+    def test_api_key_empty(self):
+        with pytest.raises(exc.InvalidAPIKeyException):
+            get_endpoint('', 'http://www.google.com/', 0, '')
+
+    def test_api_key_invalid_length(self):
+        with pytest.raises(exc.InvalidAPIKeyException):
+            get_endpoint('1234567890', 'http://www.google.com/', 0, '')
+
+    def test_api_key_valid(self):
+        key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
+        result = get_endpoint(key, 'http://www.google.com/', 0, '')
+        assert result is not None 
+
+    def test_invalid_query(self):
+        with pytest.raises(exc.InvalidQueryStringException):
+            key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
+            result = get_endpoint(key, '', 0, '') 
