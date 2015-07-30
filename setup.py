@@ -28,7 +28,7 @@ setup(
     url='https://github.com/jgoodlet/punter',
     license='MIT',
     packages=find_packages(),
-    tests_require=['pytest']
+    tests_require=['pytest'],
     install_requires=['requests>=2.7.0'],
     classifiers=[
         'Development Status :: 3 - Alpha',
