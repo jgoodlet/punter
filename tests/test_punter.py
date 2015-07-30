@@ -61,20 +61,24 @@ class TestQueryType(object):
 
 class TestEndpont(object):
 
+    def test_empty_query(self):
+        with pytest.raises(exc.InvalidQueryStringException):
+            key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
+            result = get_endpoint(key, '', 0, '')
+
+
+class TestSearch(object):
+
     def test_api_key_empty(self):
         with pytest.raises(exc.InvalidAPIKeyException):
-            get_endpoint('', 'http://www.google.com/', 0, '')
+            search('', 'http://www.google.com/')
 
     def test_api_key_invalid_length(self):
         with pytest.raises(exc.InvalidAPIKeyException):
-            get_endpoint('1234567890', 'http://www.google.com/', 0, '')
+            search('1234567890', 'http://www.google.com/')
 
     def test_api_key_valid(self):
         key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
-        result = get_endpoint(key, 'http://www.google.com/', 0, '')
+        result = search(key, 'http://www.google.com/')
         assert result is not None 
 
-    def test_invalid_query(self):
-        with pytest.raises(exc.InvalidQueryStringException):
-            key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
-            result = get_endpoint(key, '', 0, '') 

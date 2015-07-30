@@ -76,9 +76,6 @@ def get_endpoint(api_key, query, offset, type):
 
     """
 
-    if not api_key or len(api_key) < 40:
-        raise ex.InvalidAPIKeyException('Invalid API key.')
-
     query_type = get_query_type(query)
 
     if query_type not in ('domain', 'email'):

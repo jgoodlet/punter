@@ -9,9 +9,6 @@ try:
 except (IOError, ImportError):
     long_description = open('README.md').read()
 
-with open('requirements.txt') as f:
-    requirements = f.read().splitlines()
-
 version = ''
 with open('punter/__init__.py', 'r') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
@@ -31,7 +28,8 @@ setup(
     url='https://github.com/jgoodlet/punter',
     license='MIT',
     packages=find_packages(),
-    install_requires=requirements,
+    tests_require=['pytest']
+    install_requires=['requests>=2.7.0'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

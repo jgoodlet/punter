@@ -25,7 +25,10 @@ def search(api_key, query, offset=0, type='personal'):
     """
 
     if not isinstance(api_key, str):
-        raise InvalidAPIKeyException('Key must be a string')
+        raise InvalidAPIKeyException('API key must be a string')
+
+    if not api_key or len(api_key) < 40:
+        raise InvalidAPIKeyException('Invalid API key.')
 
     url = get_endpoint(api_key, query, offset, type)
 
