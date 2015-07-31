@@ -10,56 +10,61 @@ A tiny python wrapper for the [Email Hunter API](https://emailhunter.co/api). Se
 
 In most cases the primary usage will be executing searches on a domain. 
 
-    >>> import punter
-    >>> s = punter.search('d08d2ba22218d1b59df239d03fc5e66adfaec2b2', 'stripe.com')
-    >>> s['status']
-    u'success'
-    >>> s['results']
-    164
-    >>> s['emails']
-    [{
-        "status": "success",
-        "results": 164,
-        "webmail": false,
-        "pattern": "{first}"
-        "offset": 0,
-        "emails": [
+```python
+>>> import punter
+>>> s = punter.search('d08d2ba22218d1b59df239d03fc5e66adfaec2b2', 'stripe.com')
+>>> s['status']
+u'success'
+>>> s['results']
+164
+>>> s['emails']
+[{
+    "status": "success",
+    "results": 164,
+    "webmail": false,
+    "pattern": "{first}"
+    "offset": 0,
+    "emails": [
+        {
+          "value": "hoon@stripe.com",
+          "type": "personal",
+          "sources": [
             {
-              "value": "hoon@stripe.com",
-              "type": "personal",
-              "sources": [
-                {
-                  "domain": "stripe.com",
-                  "uri": "https://stripe.com/blog/weekly-and-monthly-transfers",
-                  "extracted_on": "2015-03-05"
-                }
-              ]
-            },
-        ...
-        ]
-    }]
+              "domain": "stripe.com",
+              "uri": "https://stripe.com/blog/weekly-and-monthly-transfers",
+              "extracted_on": "2015-03-05"
+            }
+          ]
+        },
+    ...
+    ]
+}]
+```
 
 Want to do an email search? Essentially the same deal.
 
-    >>> import punter
-    >>> s = punter.search('d08d2ba22218d1b59df239d03fc5e66adfaec2b2', 'apple-pay@stripe.com')
-    >>> s['status']
-    u'success'
-    >>> s['exist']
-    True
-    >>> s['email']
-    u'apple-pay@stripe.com'
-    >>> s['emails']
-    [{
-        u'domain': u'mpora.com', 
-        u'extracted_on': u'2015-04-27', 
-        u'uri': u'http://mpora.com/tags/wolfgang-wildner'
-    }]
-
+```python
+>>> import punter
+>>> s = punter.search('d08d2ba22218d1b59df239d03fc5e66adfaec2b2', 'apple-pay@stripe.com')
+>>> s['status']
+u'success'
+>>> s['exist']
+True
+>>> s['email']
+u'apple-pay@stripe.com'
+>>> s['emails']
+[{
+    u'domain': u'mpora.com', 
+    u'extracted_on': u'2015-04-27', 
+    u'uri': u'http://mpora.com/tags/wolfgang-wildner'
+}]
+```
 
 ## Install
 
-    $ pip install punter
+```bash
+$ pip install punter
+```
 
 ## Todo
 
