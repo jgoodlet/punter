@@ -3,7 +3,7 @@
 
 __title = 'punter'
 __author__ = 'Joshua Goodlett'
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 __license__ = 'MIT'
 
 
