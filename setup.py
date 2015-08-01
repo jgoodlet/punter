@@ -29,7 +29,7 @@ setup(
     license='MIT',
     packages=find_packages(),
     tests_require=['pytest'],
-    install_requires=['requests>=2.7.0'],
+    install_requires=['requests'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
