@@ -3,8 +3,13 @@
 
 __title = 'punter'
 __author__ = 'Joshua Goodlett'
-__version__ = '0.0.4'
+__version__ = '0.1.1'
 __license__ = 'MIT'
 
 
 from .api import search
+from .exceptions import (
+    PunterException,
+    InvalidAPIKeyException,
+    InvalidQueryStringException
+)
