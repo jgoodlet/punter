@@ -34,12 +34,12 @@ class TestQueryType(object):
 
     def test_query_type_domain_valid(self):
         domains = [
-            'http://www.google.com/',
-            'https://github.com/',
-            'http://github.org',
-            'http://github.edu',
-            'http://github.io',
-            'http://github.me'
+            'www.google.com',
+            'github.com',
+            'github.org',
+            'github.edu',
+            'github.io',
+            'github.me'
         ]
 
         for domain in domains:
@@ -50,9 +50,9 @@ class TestQueryType(object):
             '//www.google.com/',
             'https:/github.com/',
             'htt://github.org',
-            'http://githubedu',
-            'http://.io',
-            'http://github.'
+            'githubedu',
+            '.io',
+            'github.'
         ]
 
         for domain in domains:
@@ -71,14 +71,14 @@ class TestSearch(object):
 
     def test_api_key_empty(self):
         with pytest.raises(exc.InvalidAPIKeyException):
-            search('', 'http://www.google.com/')
+            search('', 'www.google.com')
 
     def test_api_key_invalid_length(self):
         with pytest.raises(exc.InvalidAPIKeyException):
-            search('1234567890', 'http://www.google.com/')
+            search('1234567890', 'www.google.com')
 
     def test_api_key_valid(self):
         key = 'd08d2ba22218d1b59df239d03fc5e66adfaec2b2'
-        result = search(key, 'http://www.google.com/')
+        result = search(key, 'www.google.com')
         assert result is not None 
 

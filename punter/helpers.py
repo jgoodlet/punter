@@ -24,8 +24,7 @@ EMAIL_RE = re.compile(
 # From Django, slightly modified (http://bit.ly/1ILBmfL)
 URL_RE = re.compile(
     '''
-    ^(?:http)s?:// # http:// or https://
-    (?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+
+    ^(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+
     (?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|             # domain...
     localhost|                                      # localhost...
     \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|             # ...or ipv4
