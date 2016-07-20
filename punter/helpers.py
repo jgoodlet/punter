@@ -6,7 +6,7 @@ from . import exceptions as ex
 
 
 API_ENDPOINT = 'https://api.emailhunter.co/v1/'
-EMAIL_URL = API_ENDPOINT + 'exist?email={0}&api_key={1}'
+EMAIL_URL = API_ENDPOINT + 'verify?email={0}&api_key={1}'
 DOMAIN_URL = (API_ENDPOINT + 'search?domain={0}&api_key={1}'
               '&offset={2}&type={3}')
 
